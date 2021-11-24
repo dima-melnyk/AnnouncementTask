@@ -2,7 +2,7 @@
 
 namespace AnnouncementTask.DAL.Entities
 {
-    class Announcement
+    public class Announcement
     {
         public int Id { get; set; }
         public string Description { get; set; }

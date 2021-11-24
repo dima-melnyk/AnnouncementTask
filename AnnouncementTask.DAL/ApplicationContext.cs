@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AnnouncementTask.DAL
 {
-    class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public DbSet<Announcement> Announcements { get; set; }
 
