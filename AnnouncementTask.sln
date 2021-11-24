@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnouncementTask.API", "AnnouncementTask.API\AnnouncementTask.API.csproj", "{F6A3FFF0-5FD0-46DA-89B1-CC40F281D749}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnnouncementTask.API", "AnnouncementTask.API\AnnouncementTask.API.csproj", "{F6A3FFF0-5FD0-46DA-89B1-CC40F281D749}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnouncementTask.BLL", "AnnouncementTask.BLL\AnnouncementTask.BLL.csproj", "{C04E4AC9-522C-410C-BBCB-C13F162A5C86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnnouncementTask.BLL", "AnnouncementTask.BLL\AnnouncementTask.BLL.csproj", "{C04E4AC9-522C-410C-BBCB-C13F162A5C86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnouncementTask.DAL", "AnnouncementTask.DAL\AnnouncementTask.DAL.csproj", "{BBCE4536-17DA-47D8-A008-ACBF4E88CF7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnnouncementTask.DAL", "AnnouncementTask.DAL\AnnouncementTask.DAL.csproj", "{BBCE4536-17DA-47D8-A008-ACBF4E88CF7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
