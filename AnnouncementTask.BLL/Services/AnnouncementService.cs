@@ -45,6 +45,11 @@ namespace AnnouncementTask.BLL.Services
             await _context.SaveChangesAsync();
         }
 
-        private async Task<Announcement> GetById(int id) => await _context.Announcements.FindAsync(id);
+        private async Task<Announcement> GetById(int id)
+        {
+            var model = await _context.Announcements.FindAsync(id);
+
+            return model ?? throw new KeyNotFoundException("Entity does not found");
+        }
     }
 }
