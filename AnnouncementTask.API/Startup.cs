@@ -1,16 +1,15 @@
+using AnnouncementTask.API.Mapper.Extensions;
+using AnnouncementTask.API.Middleware;
+using AnnouncementTask.BLL.Interfaces;
+using AnnouncementTask.BLL.Services;
+using AnnouncementTask.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AnnouncementTask.API
 {
@@ -26,12 +25,16 @@ namespace AnnouncementTask.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AnnouncementTask.API", Version = "v1" });
             });
+
+            services.AddDbContext<ApplicationContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+            services.AddMapper();
+            services.AddTransient<IAnnouncementService, AnnouncementService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +46,8 @@ namespace AnnouncementTask.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AnnouncementTask.API v1"));
             }
+
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             app.UseHttpsRedirection();
 
