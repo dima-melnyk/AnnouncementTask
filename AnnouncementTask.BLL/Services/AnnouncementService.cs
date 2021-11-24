@@ -35,6 +35,9 @@ namespace AnnouncementTask.BLL.Services
 
         public async Task Update(Announcement updateAnnouncement)
         {
+            var model = await GetById(updateAnnouncement.Id);
+            updateAnnouncement.CreationDate = model.CreationDate;
+
             _context.Update(updateAnnouncement);
             await _context.SaveChangesAsync();
         }
@@ -47,7 +50,7 @@ namespace AnnouncementTask.BLL.Services
 
         private async Task<Announcement> GetById(int id)
         {
-            var model = await _context.Announcements.FindAsync(id);
+            var model = await _context.Announcements.AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
 
             return model ?? throw new KeyNotFoundException("Entity does not found");
         }
